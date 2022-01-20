@@ -21,7 +21,7 @@ final class ViewController: UIViewController {
     }
 }
 extension ViewController: ViewProtocol {
-    func loadAlbums() {
+    func loadQuestions() {
         //
     }
     

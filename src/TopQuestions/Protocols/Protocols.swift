@@ -19,7 +19,7 @@ protocol DetailViewProtocol {
 protocol ViewProtocol: AnyObject {
   var presenter: PresenterProtocol? { get set}
   // PRESENTER -> VIEW
-  func loadAlbums()
+  func loadQuestions()
   func showError()
 }
 

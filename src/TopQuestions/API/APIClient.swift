@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol APIResponseProtocol: class {
+protocol APIResponseProtocol: AnyObject {
     func fetched()
     func error()
 }
