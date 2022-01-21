@@ -22,7 +22,7 @@ final class ViewController: UIViewController {
 }
 extension ViewController: ViewProtocol {
     func loadQuestions() {
-        //
+        print("works")
     }
     
     func showError() {

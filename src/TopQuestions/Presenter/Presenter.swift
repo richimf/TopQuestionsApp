@@ -14,15 +14,27 @@ final class Presenter: PresenterProtocol {
     weak var view: ViewProtocol?
     var interactor: InteractorInputProtocol?
     var router: RouterProtocol?
+    var questionItems: [Item] = []
 
     func getQuestions() {
-        interactor?.getQuestions()
+        let params: [String: String] = [
+            "site": "stackoverflow",
+            "order": "desc",
+            "sort": "votes",
+            "tagged": "swiftui",
+            "pagesize": "10"
+        ]
+        let queries: [URLQueryItem] = params.map { URLQueryItem(name: $0.key, value: $0.value)}
+        interactor?.getQuestions(with: queries)
     }
 }
 extension Presenter: InteractorOutputProtocol {
+    func updateData(with response: Response) {
+        questionItems = response.items
+        view?.loadQuestions()
+    }
+
     func showError() {
         view?.showError()
     }
-
-    // TODO: UPDATE DATA
 }
