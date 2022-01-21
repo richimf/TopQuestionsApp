@@ -9,48 +9,89 @@ import UIKit
 
 class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
     
-    private let contentLabel: UILabel = {
+    private let questionLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.numberOfLines = 0
-        lbl.font = UIFont.boldSystemFont(ofSize: 12)
+        lbl.font = UIFont.boldSystemFont(ofSize: 18)
         lbl.textAlignment = .left
         lbl.contentMode = .topLeft
-        lbl.backgroundColor = .green
         return lbl
     }()
     
+    private let tagsLabel: IndicatorLabel = {
+        let lbl = IndicatorLabel()
+        lbl.textColor = UIColor(named: "BlueTwit")
+        lbl.font = UIFont.boldSystemFont(ofSize: 14)
+        return lbl
+    }()
+    
+    private let dateLabel: IndicatorLabel = {
+        let lbl = IndicatorLabel()
+        lbl.textColor = .lightGray
+        lbl.font = UIFont.systemFont(ofSize: 14)
+        return lbl
+    }()
+
+    private let indicator: IndicatorView = IndicatorView()
+
     // MARK: - OVERRIDES
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLabels()
         showDivision()
+        self.accessoryType = .disclosureIndicator
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupLabels() {
-        let stackView = UIStackViewAnchor(arrangedSubviews: [contentLabel])
-        stackView.distribution = .fillEqually
-        stackView.axis = .horizontal
-        stackView.spacing = 1
+        questionLabel.translatesAutoresizingMaskIntoConstraints = false
+        questionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
+        tagsLabel.translatesAutoresizingMaskIntoConstraints = false
+        tagsLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.heightAnchor.constraint(equalToConstant: 30).isActive = true
+
+        let stackView = UIStackViewAnchor(arrangedSubviews: [questionLabel, tagsLabel, dateLabel, indicator])
+        stackView.distribution = .fillProportionally
+        stackView.axis = .vertical
+        stackView.spacing = 5
         addSubview(stackView)
-        let stackAnchor = Anchor(top: topAnchor, left: contentLabel.rightAnchor, bottom: bottomAnchor, right: rightAnchor)
-        let stackPadding = Padding(top: 5, left: 5, bottom: 5, right: 5)
-        stackView.anchor(anchor: stackAnchor, padding: stackPadding, width: self.frame.width, height: 100, enableInsets: false)
+        let stackAnchor = Anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor)
+        let stackPadding = Padding(top: 5, left: 15, bottom: 15, right: 40)
+        stackView.anchor(anchor: stackAnchor, padding: stackPadding, width: frame.width, height: frame.height)
     }
-    
-    func setValue(_ value: String) {
-        self.contentLabel.text = value
+
+    func setValue(_ item: Item) {
+        self.questionLabel.text = item.title
+        self.tagsLabel.text = item.tags?.reduce("", +)
+        
+        if let dateTime = item.lastEditDate {
+            let timeInterval = TimeInterval(dateTime)
+            let date = Date(timeIntervalSince1970: timeInterval)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d, YYYY"
+            self.dateLabel.text = "Asked on " + dateFormatter.string(from: date)
+        }
+        
+        guard let score = item.score, let ansCount = item.answerCount, let viewCount = item.viewCount else { return }
+        var indicators: [(text: String, icon: String)] = []
+        indicators.append((text: "\(score)", icon: "icCounts"))
+        indicators.append((text: "\(ansCount)", icon: "icMessages"))
+        indicators.append((text: "\(viewCount)", icon: "icViews"))
+        indicator.setup(indicators: indicators)
     }
 }

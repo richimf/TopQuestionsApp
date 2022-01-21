@@ -25,6 +25,7 @@ final class Router: RouterProtocol {
     func showDetail(of data: Item, from viewController: UIViewController) {
         let vc = DetailViewController()
 //        vc.setData(data: data)
+        viewController.navigationController?.navigationBar.topItem?.title = "Question"
         viewController.navigationController?.pushViewController(vc, animated: true)
     }
 }

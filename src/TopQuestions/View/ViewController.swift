@@ -14,7 +14,7 @@ private class UITableViewSafeArea: UITableView, ViewSafeAreaProtocol {
         self.delegate = delegate
         self.separatorStyle = .none
         self.rowHeight = UITableView.automaticDimension
-        self.estimatedRowHeight = rowHeight
+        self.estimatedRowHeight = 200
         self.register(cellClass.self, forCellReuseIdentifier: cellId)
     }
 }
@@ -24,7 +24,6 @@ final class ViewController: UIViewController {
     // MARK: - PROPERTIES
     private let tableView: UITableViewSafeArea = UITableViewSafeArea()
     private let cellId: String = "cellId"
-    private let rowHeight: CGFloat = 110
 
     // MARK: - VIPER
     var presenter: PresenterProtocol?
@@ -33,21 +32,11 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         // VIPER CONNECTION
         Router.createModule(view: self)
-        presenter?.getQuestions()
-        tableView.setup(delegate: self, datasource: self, register: QuestionCell.self, id: cellId)
+        //presenter?.getQuestions()
         //presenter?.getQuestionDetail(questionId: "56433665", filter: "!9_bDDxJY5")
+        tableView.setup(delegate: self, datasource: self, register: QuestionCell.self, id: cellId)
     }
-//
-//    override func viewWillAppear(_ animated: Bool) {
-//      super.viewWillAppear(animated)
-//      self.navigationController?.setNavigationBarHidden(true, animated: animated)
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//      super.viewWillDisappear(animated)
-//      self.navigationController?.setNavigationBarHidden(false, animated: animated)
-//    }
-//
+
     override func loadView() {
         super.loadView()
         self.view.backgroundColor = .white
@@ -76,7 +65,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return rowHeight
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -87,9 +76,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId,
-                                                       for: indexPath) as? QuestionCell else { return UITableViewCell() }
-        let title = presenter?.questionItems[indexPath.row].title ?? ""
-        cell.setValue(title)
+                                                       for: indexPath) as? QuestionCell,
+             let item = presenter?.questionItems[indexPath.row] else { return UITableViewCell() }
+        cell.setValue(item)
         return cell
     }
 }

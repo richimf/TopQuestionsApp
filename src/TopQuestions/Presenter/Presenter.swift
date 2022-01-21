@@ -14,7 +14,21 @@ final class Presenter: PresenterProtocol {
     weak var view: ViewProtocol?
     var interactor: InteractorInputProtocol?
     var router: RouterProtocol?
-    var questionItems: [Item] = []
+    var questionItems: [Item] = [ Item(tags: ["tag1, tag2, tag3, tag4"],
+                                       owner: nil,
+                                       isAnswered: nil,
+                                       viewCount: 10,
+                                       acceptedAnswerId: nil,
+                                       answerCount: 20,
+                                       score: 30,
+                                       lastActivityDate: 1618731589,
+                                       creationDate: 1618731589,
+                                       lastEditDate: 1618731589,
+                                       questionId: nil,
+                                       contentLicense: nil,
+                                       link: nil,
+                                       title: "Here’s how Stack Overflow users responded to Log4Shell, the Log4j vulnerability affecting almost everyone",
+                                       body: "body")]
 
     func getQuestions() {
         let params: [String: String] = [

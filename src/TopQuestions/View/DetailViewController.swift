@@ -17,4 +17,9 @@ final class DetailViewController: UIViewController {
       super.loadView()
       self.view.backgroundColor = .white
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+    }
 }

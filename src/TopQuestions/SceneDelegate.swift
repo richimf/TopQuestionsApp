@@ -27,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           navigationController?.navigationBar.tintColor = UIColor(named: "BlueTwit")
           navigationController?.navigationBar.topItem?.title = "Top Questions"
           navigationController?.navigationBar.prefersLargeTitles = true
+          navigationController?.navigationItem.largeTitleDisplayMode = .always
           navigationController?.isNavigationBarHidden = false
           window.rootViewController = navigationController
           window.makeKeyAndVisible()

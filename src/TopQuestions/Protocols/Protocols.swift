@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol DetailViewProtocol {
-    // func showDetail(data: Question, from view: UIViewController)
-}
-
 // MARK: - VIPER Protocols
 protocol ViewProtocol: AnyObject {
     var presenter: PresenterProtocol? { get set}
@@ -19,7 +15,7 @@ protocol ViewProtocol: AnyObject {
     func showError()
 }
 
-protocol PresenterProtocol: AnyObject, DetailViewProtocol {
+protocol PresenterProtocol: AnyObject {
     var view: ViewProtocol? { get set }
     var interactor: InteractorInputProtocol? { get set}
     var router: RouterProtocol? { get set }
@@ -43,7 +39,7 @@ protocol InteractorOutputProtocol: AnyObject {
     func showError()
 }
 
-protocol RouterProtocol: AnyObject, DetailViewProtocol {
+protocol RouterProtocol: AnyObject {
     // PRESENTER -> ROUTER
     func showDetail(of data: Item, from viewController: UIViewController)
 }

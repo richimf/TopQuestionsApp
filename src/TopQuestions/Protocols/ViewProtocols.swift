@@ -9,11 +9,11 @@ import UIKit
 
 // MARK: - VIEW ANCHOR SIZE PROTOCOL
 protocol ViewSizeProtocol {
-  func anchor(anchor: Anchor, padding: Padding?, width: CGFloat, height: CGFloat, enableInsets: Bool)
+  func anchor(anchor: Anchor, padding: Padding?, width: CGFloat, height: CGFloat)
 }
 extension ViewSizeProtocol where Self: UIView {
   
-  func anchor(anchor: Anchor, padding: Padding?, width: CGFloat, height: CGFloat, enableInsets: Bool) {
+  func anchor(anchor: Anchor, padding: Padding?, width: CGFloat, height: CGFloat) {
 
     translatesAutoresizingMaskIntoConstraints = false
     
@@ -30,7 +30,7 @@ extension ViewSizeProtocol where Self: UIView {
       self.bottomAnchor.constraint(equalTo: bottom, constant: -bottomPadding).isActive = true
     }
     if height != 0 {
-      heightAnchor.constraint(equalToConstant: height).isActive = true
+      heightAnchor.constraint(greaterThanOrEqualToConstant: height).isActive = true
     }
     if width != 0 {
       widthAnchor.constraint(equalToConstant: width).isActive = true
