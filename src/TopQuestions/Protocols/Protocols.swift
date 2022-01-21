@@ -5,7 +5,7 @@
 //  Created by Ricardo Montesinos on 20/01/22.
 //
 
-import Foundation
+import UIKit
 
 protocol DetailViewProtocol {
     // func showDetail(data: Question, from view: UIViewController)
@@ -27,6 +27,7 @@ protocol PresenterProtocol: AnyObject, DetailViewProtocol {
     var questionItems: [Item] { get set }
     func getQuestions()
     func getQuestionDetail(questionId: String, filter: String)
+    func showDetail(of data: Item, from viewController: UIViewController)
 }
 
 protocol InteractorInputProtocol: AnyObject {
@@ -44,4 +45,5 @@ protocol InteractorOutputProtocol: AnyObject {
 
 protocol RouterProtocol: AnyObject, DetailViewProtocol {
     // PRESENTER -> ROUTER
+    func showDetail(of data: Item, from viewController: UIViewController)
 }

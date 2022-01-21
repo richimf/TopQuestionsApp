@@ -24,6 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let window = window {
           let mainVC = ViewController()
           navigationController = UINavigationController(rootViewController: mainVC)
+          navigationController?.navigationBar.tintColor = UIColor(named: "BlueTwit")
+          navigationController?.navigationBar.topItem?.title = "Top Questions"
+          navigationController?.navigationBar.prefersLargeTitles = true
+          navigationController?.isNavigationBarHidden = false
           window.rootViewController = navigationController
           window.makeKeyAndVisible()
         }

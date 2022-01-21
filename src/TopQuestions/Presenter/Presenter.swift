@@ -5,7 +5,7 @@
 //  Created by Ricardo Montesinos on 20/01/22.
 //
 
-import Foundation
+import UIKit
 
 final class Presenter: PresenterProtocol {
 
@@ -37,6 +37,10 @@ final class Presenter: PresenterProtocol {
             "filter": filter]
         let queries: [URLQueryItem] = params.map { URLQueryItem(name: $0.key, value: $0.value)}
         interactor?.getQuestionsDetailsFor(questionId: questionId, with: queries)
+    }
+    
+    func showDetail(of data: Item, from viewController: UIViewController) {
+      router?.showDetail(of: data, from: viewController)
     }
 }
 extension Presenter: InteractorOutputProtocol {
