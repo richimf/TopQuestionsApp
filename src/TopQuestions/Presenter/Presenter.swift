@@ -22,10 +22,21 @@ final class Presenter: PresenterProtocol {
             "order": "desc",
             "sort": "votes",
             "tagged": "swiftui",
-            "pagesize": "10"
-        ]
+            "pagesize": "10"]
         let queries: [URLQueryItem] = params.map { URLQueryItem(name: $0.key, value: $0.value)}
         interactor?.getQuestions(with: queries)
+    }
+    
+    func getQuestionDetail(questionId: String, filter: String) {
+        let params: [String: String] = [
+            "site": "stackoverflow",
+            "order": "desc",
+            "sort": "votes",
+            "tagged": "swiftui",
+            "pagesize": "10",
+            "filter": filter]
+        let queries: [URLQueryItem] = params.map { URLQueryItem(name: $0.key, value: $0.value)}
+        interactor?.getQuestionsDetailsFor(questionId: questionId, with: queries)
     }
 }
 extension Presenter: InteractorOutputProtocol {

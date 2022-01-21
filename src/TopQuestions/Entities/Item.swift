@@ -22,6 +22,7 @@ struct Item: Decodable {
     let contentLicense: String?
     let link: String?
     let title: String?
+    let body: String?
 
     private enum CodingKeys: String, CodingKey {
         case tags
@@ -38,5 +39,6 @@ struct Item: Decodable {
         case contentLicense = "content_license"
         case link
         case title
+        case body
     }
 }

@@ -18,6 +18,7 @@ final class ViewController: UIViewController {
         // VIPER CONNECTION
         Router.createModule(view: self)
         presenter?.getQuestions()
+//        presenter?.getQuestionDetail(questionId: "56433665", filter: "!9_bDDxJY5")
     }
 }
 extension ViewController: ViewProtocol {

@@ -45,6 +45,12 @@ class APIClient {
         performRequest(of: url)
     }
     
+    func fetchQuestionDetailsFor(questionId: String) {
+        components.path = APIURL.path.rawValue + "/" + questionId
+        guard let url = components.url else { return }
+        performRequest(of: url)
+    }
+    
     private func performRequest(of url: URL) {
         let request = URLRequest(url: url)
         let task =  URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in

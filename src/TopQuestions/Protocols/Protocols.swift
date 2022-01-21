@@ -26,12 +26,14 @@ protocol PresenterProtocol: AnyObject, DetailViewProtocol {
     // VIEW -> PRESENTER
     var questionItems: [Item] { get set }
     func getQuestions()
+    func getQuestionDetail(questionId: String, filter: String)
 }
 
 protocol InteractorInputProtocol: AnyObject {
     var presenter: InteractorOutputProtocol? { get set}
     // PRESENTER -> INTERACTOR
     func getQuestions(with queries: [URLQueryItem]?)
+    func getQuestionsDetailsFor(questionId: String, with queries: [URLQueryItem]?)
 }
 
 protocol InteractorOutputProtocol: AnyObject {
