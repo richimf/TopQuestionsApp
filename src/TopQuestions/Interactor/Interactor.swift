@@ -14,15 +14,23 @@ final class Interactor: InteractorInputProtocol {
     weak var presenter: InteractorOutputProtocol?
     private let apiClient = APIClient()
     
-    func getQuestions() {
+    init() {
         apiClient.delegate = self
+    }
+    
+    func getQuestions(with queries: [URLQueryItem]?) {
+        apiClient.setQueryItems(with: queries)
         apiClient.fetchQuestions()
+    }
+    
+    func getQuestionsDetailsFor(questionId: String, with queries: [URLQueryItem]?) {
+        apiClient.setQueryItems(with: queries)
+        apiClient.fetchQuestionDetailsFor(questionId: questionId)
     }
 }
 extension Interactor: APIResponseProtocol {
-
-    func fetched() { // TODO: Add questions as parameter
-        //presenter?.update(data)
+    func fetched(response: Response) {
+        presenter?.updateData(with: response)
     }
 
     func error() {

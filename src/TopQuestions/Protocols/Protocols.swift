@@ -7,41 +7,41 @@
 
 import Foundation
 
-protocol FetchQuestionsProtocol {
-  func getQuestions()
-}
-
 protocol DetailViewProtocol {
- // func showDetail(data: Question, from view: UIViewController)
+    // func showDetail(data: Question, from view: UIViewController)
 }
 
 // MARK: - VIPER Protocols
 protocol ViewProtocol: AnyObject {
-  var presenter: PresenterProtocol? { get set}
-  // PRESENTER -> VIEW
-  func loadQuestions()
-  func showError()
+    var presenter: PresenterProtocol? { get set}
+    // PRESENTER -> VIEW
+    func loadQuestions()
+    func showError()
 }
 
-protocol PresenterProtocol: AnyObject, FetchQuestionsProtocol, DetailViewProtocol {
-  var view: ViewProtocol? { get set }
-  var interactor: InteractorInputProtocol? { get set}
-  var router: RouterProtocol? { get set }
-  // VIEW -> PRESENTER
-  // var data: [Data]? { get set }
+protocol PresenterProtocol: AnyObject, DetailViewProtocol {
+    var view: ViewProtocol? { get set }
+    var interactor: InteractorInputProtocol? { get set}
+    var router: RouterProtocol? { get set }
+    // VIEW -> PRESENTER
+    var questionItems: [Item] { get set }
+    func getQuestions()
+    func getQuestionDetail(questionId: String, filter: String)
 }
 
-protocol InteractorInputProtocol: AnyObject, FetchQuestionsProtocol {
-  var presenter: InteractorOutputProtocol? { get set}
-  // PRESENTER -> INTERACTOR
+protocol InteractorInputProtocol: AnyObject {
+    var presenter: InteractorOutputProtocol? { get set}
+    // PRESENTER -> INTERACTOR
+    func getQuestions(with queries: [URLQueryItem]?)
+    func getQuestionsDetailsFor(questionId: String, with queries: [URLQueryItem]?)
 }
 
 protocol InteractorOutputProtocol: AnyObject {
-  // INTERACTOR -> PRESENTER
- // func updateData(data: [Data])
-  func showError()
+    // INTERACTOR -> PRESENTER
+    func updateData(with response: Response)
+    func showError()
 }
 
 protocol RouterProtocol: AnyObject, DetailViewProtocol {
-  // PRESENTER -> ROUTER
+    // PRESENTER -> ROUTER
 }
