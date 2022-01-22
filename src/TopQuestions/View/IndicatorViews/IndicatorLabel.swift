@@ -33,4 +33,9 @@ final class IndicatorLabel: UILabel {
         self.adjustsFontSizeToFitWidth = true
         self.textColor = customTint
     }
+    
+    func setWithAnchorTo(constant: CGFloat) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.widthAnchor.constraint(equalToConstant: constant).isActive = true
+    }
 }

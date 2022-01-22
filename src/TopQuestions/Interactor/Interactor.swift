@@ -20,10 +20,14 @@ final class Interactor: InteractorInputProtocol {
     
     func getQuestions(with queries: [URLQueryItem]?) {
         apiClient.setQueryItems(with: queries)
-        apiClient.fetchQuestions()
+        #if DEBUG
+            apiClient.loadJsonData(file: "questions")
+        #else
+            apiClient.fetchQuestions()
+        #endif
     }
     
-    func getQuestionsDetailsFor(questionId: String, with queries: [URLQueryItem]?) {
+    func getQuestionsDetailsFor(questionId: Int, with queries: [URLQueryItem]?) {
         apiClient.setQueryItems(with: queries)
         apiClient.fetchQuestionDetailsFor(questionId: questionId)
     }

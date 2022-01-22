@@ -33,7 +33,7 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
         return lbl
     }()
 
-    private let indicator: IndicatorView = IndicatorView()
+    private let indicatorsStackView: IndicatorView = IndicatorView()
 
     // MARK: - OVERRIDES
     override func awakeFromNib() {
@@ -62,10 +62,10 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
         tagsLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        indicatorsStackView.translatesAutoresizingMaskIntoConstraints = false
+        indicatorsStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
 
-        let stackView = UIStackViewAnchor(arrangedSubviews: [questionLabel, tagsLabel, dateLabel, indicator])
+        let stackView = UIStackViewAnchor(arrangedSubviews: [questionLabel, tagsLabel, dateLabel, indicatorsStackView])
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical
         stackView.spacing = 5
@@ -77,21 +77,9 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
 
     func setValue(_ item: Item) {
         self.questionLabel.text = item.title
-        self.tagsLabel.text = item.tags?.reduce("", +)
-        
-        if let dateTime = item.lastEditDate {
-            let timeInterval = TimeInterval(dateTime)
-            let date = Date(timeIntervalSince1970: timeInterval)
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMM d, YYYY"
-            self.dateLabel.text = "Asked on " + dateFormatter.string(from: date)
-        }
-        
+        self.tagsLabel.text = item.tags?.joined(separator: ", ")
+        self.dateLabel.text = DateUtil.getAskedDate(from: item.lastEditDate)
         guard let score = item.score, let ansCount = item.answerCount, let viewCount = item.viewCount else { return }
-        var indicators: [(text: String, icon: String)] = []
-        indicators.append((text: "\(score)", icon: "icCounts"))
-        indicators.append((text: "\(ansCount)", icon: "icMessages"))
-        indicators.append((text: "\(viewCount)", icon: "icViews"))
-        indicator.setup(indicators: indicators)
+        indicatorsStackView.updateIndicatorValues(score: score, answers: ansCount, views: viewCount)
     }
 }

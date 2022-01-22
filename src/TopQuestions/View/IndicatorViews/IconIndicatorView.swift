@@ -29,4 +29,9 @@ final class IconIndicator: UIImageView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    func setWithAnchorTo(constant: CGFloat) {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.widthAnchor.constraint(equalToConstant: constant).isActive = true
+    }
 }

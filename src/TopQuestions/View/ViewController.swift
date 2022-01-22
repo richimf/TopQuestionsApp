@@ -9,12 +9,15 @@ import UIKit
 
 private class UITableViewSafeArea: UITableView, ViewSafeAreaProtocol {
 
-    func setup(delegate: UITableViewDelegate, datasource: UITableViewDataSource, register cellClass: AnyClass?, id cellId: String) {
+    func setup(delegate: UITableViewDelegate, datasource: UITableViewDataSource) {
         self.dataSource = datasource
         self.delegate = delegate
         self.separatorStyle = .none
         self.rowHeight = UITableView.automaticDimension
         self.estimatedRowHeight = 200
+    }
+    
+    func registerCell( register cellClass: AnyClass?, id cellId: String) {
         self.register(cellClass.self, forCellReuseIdentifier: cellId)
     }
 }
@@ -32,16 +35,16 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         // VIPER CONNECTION
         Router.createModule(view: self)
-        //presenter?.getQuestions()
-        //presenter?.getQuestionDetail(questionId: "56433665", filter: "!9_bDDxJY5")
-        tableView.setup(delegate: self, datasource: self, register: QuestionCell.self, id: cellId)
+        presenter?.getQuestions()
+        tableView.setup(delegate: self, datasource: self)
+        tableView.registerCell(register: QuestionCell.self, id: cellId)
     }
 
     override func loadView() {
         super.loadView()
         self.view.backgroundColor = .white
         self.view.addSubview(tableView)
-        tableView.setupAnchorWithSafeArea(container: self.view, safeArea: view.layoutMarginsGuide)
+        tableView.setupAnchorWithSafeArea(container: self.view, safeArea: view.safeAreaLayoutGuide)
     }
 }
 

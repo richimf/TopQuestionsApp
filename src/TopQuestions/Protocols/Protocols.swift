@@ -22,7 +22,6 @@ protocol PresenterProtocol: AnyObject {
     // VIEW -> PRESENTER
     var questionItems: [Item] { get set }
     func getQuestions()
-    func getQuestionDetail(questionId: String, filter: String)
     func showDetail(of data: Item, from viewController: UIViewController)
 }
 
@@ -30,7 +29,7 @@ protocol InteractorInputProtocol: AnyObject {
     var presenter: InteractorOutputProtocol? { get set}
     // PRESENTER -> INTERACTOR
     func getQuestions(with queries: [URLQueryItem]?)
-    func getQuestionsDetailsFor(questionId: String, with queries: [URLQueryItem]?)
+    func getQuestionsDetailsFor(questionId: Int, with queries: [URLQueryItem]?)
 }
 
 protocol InteractorOutputProtocol: AnyObject {
