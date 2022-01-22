@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
+class QuestionCell: UITableViewCell {
     
     private let questionLabel: UILabel = {
         let lbl = UILabel()
@@ -48,7 +48,6 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupConstraints()
         setupStackContainer()
-        showDivision()
         self.accessoryType = .disclosureIndicator
     }
 
@@ -56,7 +55,7 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupConstraints() {
+    func setupConstraints() {
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
         questionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
         tagsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +66,7 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
         indicatorsStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
-    private func setupStackContainer() {
+    func setupStackContainer() {
         let stackView = UIStackViewAnchor(arrangedSubviews: [questionLabel, tagsLabel, dateLabel, indicatorsStackView])
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical
@@ -84,5 +83,27 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
         self.dateLabel.text = DateUtil.getAskedDate(from: item.lastEditDate)
         guard let score = item.score, let ansCount = item.answerCount, let viewCount = item.viewCount else { return }
         indicatorsStackView.updateIndicatorValues(score: score, answers: ansCount, views: viewCount)
+    }
+}
+
+class QuestionCellDetail: QuestionCell {
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupConstraints()
+        setupStackContainer()
+        self.accessoryType = .none
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

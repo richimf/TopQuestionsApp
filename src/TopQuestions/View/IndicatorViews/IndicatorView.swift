@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class IndicatorView: UIView, ViewWithSeparatorStyle {
+final class IndicatorView: UIView {
         
     // SCORE INDICATOR
     private let scoreIcon: IconIndicator = {

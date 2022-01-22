@@ -14,8 +14,8 @@
 		1314AE7A279B7C1B00590411 /* question-detail.json in Resources */ = {isa = PBXBuildFile; fileRef = 1314AE79279B7C1B00590411 /* question-detail.json */; };
 		1314AE7D279B86D800590411 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314AE7C279B86D800590411 /* DateUtil.swift */; };
 		1314AE7F279B8D0400590411 /* NumberFormatUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314AE7E279B8D0400590411 /* NumberFormatUtil.swift */; };
-		1314AE82279B8F1100590411 /* ViewWithSeparatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314AE81279B8F1100590411 /* ViewWithSeparatorStyle.swift */; };
 		1314AE84279B8F6C00590411 /* ViewSafeAreaProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314AE83279B8F6C00590411 /* ViewSafeAreaProtocol.swift */; };
+		1314AE89279B93C400590411 /* TableViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314AE88279B93C400590411 /* TableViewBuilder.swift */; };
 		1323E6D52799FA9700DF6E40 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1323E6D42799FA9700DF6E40 /* AppDelegate.swift */; };
 		1323E6D72799FA9700DF6E40 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1323E6D62799FA9700DF6E40 /* SceneDelegate.swift */; };
 		1323E6D92799FA9700DF6E40 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1323E6D82799FA9700DF6E40 /* ViewController.swift */; };
@@ -65,8 +65,8 @@
 		1314AE79279B7C1B00590411 /* question-detail.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "question-detail.json"; sourceTree = "<group>"; };
 		1314AE7C279B86D800590411 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		1314AE7E279B8D0400590411 /* NumberFormatUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatUtil.swift; sourceTree = "<group>"; };
-		1314AE81279B8F1100590411 /* ViewWithSeparatorStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewWithSeparatorStyle.swift; sourceTree = "<group>"; };
 		1314AE83279B8F6C00590411 /* ViewSafeAreaProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSafeAreaProtocol.swift; sourceTree = "<group>"; };
+		1314AE88279B93C400590411 /* TableViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewBuilder.swift; sourceTree = "<group>"; };
 		1323E6D12799FA9700DF6E40 /* TopQuestions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopQuestions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1323E6D42799FA9700DF6E40 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1323E6D62799FA9700DF6E40 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +134,7 @@
 			children = (
 				1314AE7C279B86D800590411 /* DateUtil.swift */,
 				1314AE7E279B8D0400590411 /* NumberFormatUtil.swift */,
+				1314AE88279B93C400590411 /* TableViewBuilder.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -162,7 +163,6 @@
 			children = (
 				1393A36C279A5303009387C0 /* ViewProtocols.swift */,
 				1314AE83279B8F6C00590411 /* ViewSafeAreaProtocol.swift */,
-				1314AE81279B8F1100590411 /* ViewWithSeparatorStyle.swift */,
 			);
 			path = ViewProtocols;
 			sourceTree = "<group>";
@@ -428,7 +428,6 @@
 				1314AE73279ADA3D00590411 /* IconIndicatorView.swift in Sources */,
 				1323E6D52799FA9700DF6E40 /* AppDelegate.swift in Sources */,
 				1393A373279A98D0009387C0 /* QuestionCell.swift in Sources */,
-				1314AE82279B8F1100590411 /* ViewWithSeparatorStyle.swift in Sources */,
 				1393A365279A314A009387C0 /* Response.swift in Sources */,
 				1393A36D279A5303009387C0 /* ViewProtocols.swift in Sources */,
 				1393A35A279A14D8009387C0 /* Router.swift in Sources */,
@@ -440,6 +439,7 @@
 				1393A361279A2E2E009387C0 /* Owner.swift in Sources */,
 				1393A356279A14BF009387C0 /* Interactor.swift in Sources */,
 				1393A36F279A53B4009387C0 /* UIEntities.swift in Sources */,
+				1314AE89279B93C400590411 /* TableViewBuilder.swift in Sources */,
 				1314AE75279ADBDA00590411 /* IndicatorLabel.swift in Sources */,
 				1314AE84279B8F6C00590411 /* ViewSafeAreaProtocol.swift in Sources */,
 				1314AE7D279B86D800590411 /* DateUtil.swift in Sources */,
