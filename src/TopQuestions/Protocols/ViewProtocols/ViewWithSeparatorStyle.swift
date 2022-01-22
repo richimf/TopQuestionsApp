@@ -18,7 +18,7 @@ extension ViewWithSeparatorStyle where Self: UIView {
     setupDivisor(view: &separator)
     separator.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
   }
-  
+
   private func setupDivisor(view: inout UIView) {
     view.translatesAutoresizingMaskIntoConstraints = false
     view.heightAnchor.constraint(equalToConstant: 0.4).isActive = true

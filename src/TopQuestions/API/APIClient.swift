@@ -23,7 +23,7 @@ enum APIURL: String {
     case path = "/2.2/questions"
 }
 
-class APIClient {
+final class APIClient {
 
     var delegate: APIResponseProtocol?
     

@@ -46,7 +46,8 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupLabels()
+        setupConstraints()
+        setupStackContainer()
         showDivision()
         self.accessoryType = .disclosureIndicator
     }
@@ -55,7 +56,7 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupLabels() {
+    private func setupConstraints() {
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
         questionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
         tagsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +65,9 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
         dateLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         indicatorsStackView.translatesAutoresizingMaskIntoConstraints = false
         indicatorsStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-
+    }
+    
+    private func setupStackContainer() {
         let stackView = UIStackViewAnchor(arrangedSubviews: [questionLabel, tagsLabel, dateLabel, indicatorsStackView])
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical

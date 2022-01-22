@@ -18,7 +18,7 @@ extension Double {
 }
 
 final class NumberFormatUtil {
-
+    /// This function transforms a number like "1000 into 1K"
     static func formatNumber(_ n: Int) -> String {
         let num = abs(Double(n))
         let sign = (n < 0) ? "-" : ""
