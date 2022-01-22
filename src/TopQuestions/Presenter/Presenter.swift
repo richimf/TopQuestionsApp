@@ -5,7 +5,7 @@
 //  Created by Ricardo Montesinos on 20/01/22.
 //
 
-import Foundation
+import UIKit
 
 final class Presenter: PresenterProtocol {
 
@@ -26,15 +26,21 @@ final class Presenter: PresenterProtocol {
         let queries: [URLQueryItem] = params.map { URLQueryItem(name: $0.key, value: $0.value)}
         interactor?.getQuestions(with: queries)
     }
-    
-    func getQuestionDetail(questionId: String, filter: String) {
+
+    func showDetail(of data: Item, from viewController: UIViewController) {
+        guard let questionId = data.questionId else { return }
+        // getQuestionDetail(from: questionId)
+        router?.showDetail(of: data, from: viewController)
+    }
+
+    private func getQuestionDetail(from questionId: Int) {
         let params: [String: String] = [
             "site": "stackoverflow",
             "order": "desc",
             "sort": "votes",
             "tagged": "swiftui",
             "pagesize": "10",
-            "filter": filter]
+            "filter": "!9_bDDxJY5"]
         let queries: [URLQueryItem] = params.map { URLQueryItem(name: $0.key, value: $0.value)}
         interactor?.getQuestionsDetailsFor(questionId: questionId, with: queries)
     }

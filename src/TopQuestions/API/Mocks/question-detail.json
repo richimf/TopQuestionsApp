@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "tags": [
+        "swift",
+        "swiftui",
+        "swift5"
+      ],
+      "owner": {
+        "reputation": 4133,
+        "user_id": 7282573,
+        "user_type": "registered",
+        "profile_image": "https://www.gravatar.com/avatar/da183c76c0a1f20d6414b809edd9e455?s=256&d=identicon&r=PG&f=1",
+        "display_name": "Half",
+        "link": "https://stackoverflow.com/users/7282573/half"
+      },
+      "is_answered": true,
+      "view_count": 52101,
+      "accepted_answer_id": 56433885,
+      "answer_count": 13,
+      "score": 344,
+      "last_activity_date": 1634238672,
+      "creation_date": 1559591221,
+      "last_edit_date": 1634238672,
+      "question_id": 56433665,
+      "content_license": "CC BY-SA 4.0",
+      "link": "https://stackoverflow.com/questions/56433665/what-is-the-some-keyword-in-swiftui",
+      "title": "What is the &quot;some&quot; keyword in Swift(UI)?",
+      "body": "<p>The new <a href=\"https://developer.apple.com/tutorials/swiftui/creating-and-combining-views\" rel=\"noreferrer\">SwiftUI tutorial</a> has the following code:</p>\n\n<pre class=\"lang-swift prettyprint-override\"><code>struct ContentView: View {\n    var body: some View {\n        Text(\"Hello World\")\n    }\n}\n</code></pre>\n\n<p>The second line the word <code>some</code>, and on their site is highlighted as if it were a keyword.</p>\n\n<p>Swift 5.1 does not appear to have <code>some</code> as a keyword, and I don't see what else the word <code>some</code> could be doing there, since it goes where the type usually goes. Is there a new, unannounced version of Swift? Is it a function that's being used on a type in a way I didn't know about?</p>\n\n<p>What does the keyword <code>some</code> do?</p>\n"
+    }
+  ],
+  "has_more": false,
+  "quota_max": 300,
+  "quota_remaining": 297
+}

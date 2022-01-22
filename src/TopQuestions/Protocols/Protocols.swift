@@ -5,11 +5,7 @@
 //  Created by Ricardo Montesinos on 20/01/22.
 //
 
-import Foundation
-
-protocol DetailViewProtocol {
-    // func showDetail(data: Question, from view: UIViewController)
-}
+import UIKit
 
 // MARK: - VIPER Protocols
 protocol ViewProtocol: AnyObject {
@@ -19,21 +15,21 @@ protocol ViewProtocol: AnyObject {
     func showError()
 }
 
-protocol PresenterProtocol: AnyObject, DetailViewProtocol {
+protocol PresenterProtocol: AnyObject {
     var view: ViewProtocol? { get set }
     var interactor: InteractorInputProtocol? { get set}
     var router: RouterProtocol? { get set }
     // VIEW -> PRESENTER
     var questionItems: [Item] { get set }
     func getQuestions()
-    func getQuestionDetail(questionId: String, filter: String)
+    func showDetail(of data: Item, from viewController: UIViewController)
 }
 
 protocol InteractorInputProtocol: AnyObject {
     var presenter: InteractorOutputProtocol? { get set}
     // PRESENTER -> INTERACTOR
     func getQuestions(with queries: [URLQueryItem]?)
-    func getQuestionsDetailsFor(questionId: String, with queries: [URLQueryItem]?)
+    func getQuestionsDetailsFor(questionId: Int, with queries: [URLQueryItem]?)
 }
 
 protocol InteractorOutputProtocol: AnyObject {
@@ -42,6 +38,7 @@ protocol InteractorOutputProtocol: AnyObject {
     func showError()
 }
 
-protocol RouterProtocol: AnyObject, DetailViewProtocol {
+protocol RouterProtocol: AnyObject {
     // PRESENTER -> ROUTER
+    func showDetail(of data: Item, from viewController: UIViewController)
 }
