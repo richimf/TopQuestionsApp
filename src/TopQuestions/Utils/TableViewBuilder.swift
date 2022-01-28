@@ -14,7 +14,7 @@ class UITableViewSafeArea: UITableView, ViewSafeAreaProtocol {
         self.delegate = delegate
         self.separatorStyle = .none
         self.rowHeight = UITableView.automaticDimension
-        self.estimatedRowHeight = 200
+//        self.estimatedRowHeight = 200
     }
     
     func registerCell( register cellClass: AnyClass?, id cellId: String) {

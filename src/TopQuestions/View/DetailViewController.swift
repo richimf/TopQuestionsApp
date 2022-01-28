@@ -23,18 +23,12 @@ final class DetailViewController: UIViewController {
         tableView.setup(delegate: self, datasource: self)
         tableView.registerCell(register: QuestionCellDetail.self, id: questionCellId)
         tableView.registerCell(register: UITableViewCell.self, id: bodyCellId)
-        tableView.registerCell(register: UITableViewCell.self, id: ownerCellId)
-        tableView.separatorStyle = .none
+        tableView.registerCell(register: OwnerCell.self, id: ownerCellId)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "Question"
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
     }
 
     override func loadView() {
@@ -54,6 +48,10 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         return rows
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             guard let data = self.data, let cell = tableView.dequeueReusableCell(withIdentifier: questionCellId, for: indexPath) as? QuestionCellDetail else
@@ -63,18 +61,19 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.row == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: bodyCellId, for: indexPath) as? UITableViewCell else
             { return UITableViewCell() }
-            cell.textLabel?.text = "some body large text"
+            cell.textLabel?.text = "after years of lurking here I’ve got something to contribute! Over the recent year I’ve been working on a web framework for everyone’s favorite language. Its focus is on clean, elegant, full featured APIs and sharing code between Swift clients ⠀and server. There are a couple quickstart projects in there (including one that’s Fullstack; iOS, Backend, Shared all in a single Xcode Project!) to peruse. There’s also a ton of docs that are geared towards fellow Swifters who are just getting started in backend dev. Would love for you guys to check it out and give feedback!"
             return cell
         }else if indexPath.row == 2 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ownerCellId, for: indexPath) as? UITableViewCell else
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ownerCellId, for: indexPath) as? OwnerCell else
             { return UITableViewCell() }
-            cell.textLabel?.text = "some body large text"
+            //cell.textLabel?.text = "some body large text"
+            cell.setName("name", count: "12345")
             return cell
         }
         return UITableViewCell()
     }
     
-    public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return nil
     }
 }
