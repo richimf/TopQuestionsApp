@@ -7,6 +7,12 @@
 
 import UIKit
 
+extension UITableViewCell {
+    func getDefaultId() -> String {
+        return String(self.description)
+    }
+}
+
 class QuestionCell: UITableViewCell {
     
     private let questionLabel: UILabel = {

@@ -10,7 +10,7 @@ import UIKit
 final class Router: RouterProtocol {
 
     private typealias PresenterProtocols = PresenterProtocol & InteractorOutputProtocol
-     
+
     //SETUP INITIAL VIPER MODULE
      class func createModule(view: ViewProtocol) {
        let presenter: PresenterProtocols = Presenter()
@@ -20,11 +20,13 @@ final class Router: RouterProtocol {
        view.presenter?.interactor = Interactor()
        view.presenter?.interactor?.presenter = presenter
      }
-    
-    // TODO: GO TO DETAIL VIEW FUNCTION
+
     func showDetail(of data: Item, from viewController: UIViewController) {
+        let viewModel = DetailViewModel()
+        viewModel.questionId = data.questionId
+
         let vc = DetailViewController()
-        vc.data = data
+        vc.viewModel = viewModel
         viewController.navigationController?.pushViewController(vc, animated: true)
     }
 }

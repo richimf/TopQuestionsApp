@@ -26,9 +26,9 @@ enum APIURL: String {
 final class APIClient {
 
     var delegate: APIResponseProtocol?
-    
+
     private var components = URLComponents()
-    
+
     init() {
         components.scheme = APIURL.scheme.rawValue
         components.host = APIURL.host.rawValue
@@ -43,13 +43,13 @@ final class APIClient {
         guard let url = components.url else { return }
         performRequest(of: url)
     }
-    
+
     func fetchQuestionDetailsFor(questionId: Int) {
         components.path = APIURL.path.rawValue + "/\(questionId)"
         guard let url = components.url else { return }
         performRequest(of: url)
     }
-    
+
     private func performRequest(of url: URL) {
         let request = URLRequest(url: url)
         let task =  URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
@@ -59,20 +59,19 @@ final class APIClient {
                 return
             }
             guard let data = data else {
-                print("Error: No data to decode.")
                 self.delegate?.error()
                 return
             }
             // Serialize the data into an object if success:
             guard let decodedData = try? JSONDecoder().decode(Response.self, from: data) else {
-                print("Error: Couldn't decode data.")
+                self.delegate?.error()
                 return
             }
             self.delegate?.fetched(response: decodedData)
         })
         task.resume()
     }
-    
+
     /// This function is only executed with DEBUG schemes.
     func loadJsonData(file: String) {
         if let jsonFilePath = Bundle(for: type(of:  self)).path(forResource: file, ofType: "json") {
@@ -84,4 +83,5 @@ final class APIClient {
             }
         }
     }
+
 }
