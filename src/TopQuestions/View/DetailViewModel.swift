@@ -28,6 +28,8 @@ final class DetailViewModel: NSObject {
 
     weak var tableView: UITableViewSafeArea? {
         didSet {
+            tableView?.isHidden = true
+            tableView?.allowsSelection = false
             tableView?.registerCell(register: QuestionCellDetail.self, id: CellIds.question)
             tableView?.registerCell(register: UITableViewCell.self, id: CellIds.body)
             tableView?.registerCell(register: OwnerCell.self, id: CellIds.owner)

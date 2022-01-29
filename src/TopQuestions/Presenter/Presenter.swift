@@ -28,10 +28,8 @@ final class Presenter: PresenterProtocol {
     }
 
     func showDetail(of data: Item, from viewController: UIViewController) {
-        guard let questionId = data.questionId else { return }
         router?.showDetail(of: data, from: viewController)
     }
-
 }
 extension Presenter: InteractorOutputProtocol {
     func updateData(with response: Response) {
