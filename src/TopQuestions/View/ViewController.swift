@@ -32,6 +32,12 @@ final class ViewController: UIViewController {
         self.view.addSubview(tableView)
         tableView.setupAnchorWithSafeArea(container: self.view, safeArea: view.safeAreaLayoutGuide)
     }
+    
+    override func viewDidLayoutSubviews() {
+        tableView.reloadData()
+        tableView.layoutIfNeeded()
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+    }
 }
 
 // MARK: - VIPER
