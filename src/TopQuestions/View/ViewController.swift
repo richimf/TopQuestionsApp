@@ -49,7 +49,7 @@ extension ViewController: ViewProtocol {
     }
 
     func showError() {
-        //
+        UIAlertHelper.showErrorAlert(context: self)
     }
 }
 // MARK: - EXTENSIONS

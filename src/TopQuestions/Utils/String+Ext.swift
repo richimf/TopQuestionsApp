@@ -22,16 +22,4 @@ extension String {
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
     }
-
-//    func setStyle(text: String) {
-//        if let attString = text.htmlToAttributedString {
-//            let textAttributes = [
-//                NSAttributedString.Key.foregroundColor: UIColor.white,
-//                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)
-//            ] as [NSAttributedString.Key: Any]
-//            attString.attributes(at: <#T##Int#>, longestEffectiveRange: <#T##NSRangePointer?#>, in: <#T##NSRange#>)
-//            attString.addAttributes(textAttributes, range: NSRange(location: 0, length: attString.length))
-//            self.contentText.attributedText = labelTextFormatted
-//        }
-//    }
 }
