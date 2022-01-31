@@ -61,6 +61,13 @@ final class DetailViewController: UIViewController {
 }
 
 extension DetailViewController: DetailViewModelDelegate {
+
+    func showError() {
+        UIAlertHelper.showErrorAlert(context: self)
+        self.spinner.stopAnimating()
+        self.spinner.isHidden = true
+    }
+
     func reloadView() {
         DispatchQueue.main.async {
             UIView.transition(with: self.tableView, duration: 0.35, options: .transitionCrossDissolve, animations: {

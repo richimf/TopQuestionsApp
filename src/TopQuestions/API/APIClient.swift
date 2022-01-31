@@ -87,9 +87,11 @@ final class APIClient: APIClientProtocol {
             if let data = try? Data(contentsOf: jsonFileURL) {
                 if let decodedData = try? JSONDecoder().decode(Response.self, from: data) {
                     self.delegate?.fetched(response: decodedData)
+                    return
                 }
             }
         }
+        self.delegate?.error()
     }
 
 }

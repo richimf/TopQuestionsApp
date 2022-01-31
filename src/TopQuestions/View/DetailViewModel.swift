@@ -9,6 +9,7 @@ import UIKit
 
 protocol DetailViewModelDelegate {
     func reloadView()
+    func showError()
 }
 
 final class DetailViewModel: NSObject {
@@ -76,7 +77,7 @@ extension DetailViewModel: APIResponseProtocol {
     }
 
     func error() {
-        //
+        self.delegate?.showError()
     }
 }
 extension DetailViewModel: UITableViewDataSource {
