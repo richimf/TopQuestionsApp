@@ -26,13 +26,9 @@ final class Interactor: InteractorInputProtocol {
             apiClient.fetchQuestions()
         #endif
     }
-    
-    func getQuestionsDetailsFor(questionId: Int, with queries: [URLQueryItem]?) {
-        apiClient.setQueryItems(with: queries)
-        apiClient.fetchQuestionDetailsFor(questionId: questionId)
-    }
 }
 extension Interactor: APIResponseProtocol {
+
     func fetched(response: Response) {
         presenter?.updateData(with: response)
     }

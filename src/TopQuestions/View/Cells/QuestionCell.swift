@@ -7,29 +7,35 @@
 
 import UIKit
 
-class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
-    
+extension UITableViewCell {
+    func getDefaultId() -> String {
+        return String(self.description)
+    }
+}
+
+class QuestionCell: UITableViewCell {
+
     private let questionLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.numberOfLines = 0
-        lbl.font = UIFont.boldSystemFont(ofSize: 18)
+        lbl.font = UIFont.boldSystemFont(ofSize: 15)
         lbl.textAlignment = .left
         lbl.contentMode = .topLeft
         return lbl
     }()
-    
+
     private let tagsLabel: IndicatorLabel = {
         let lbl = IndicatorLabel()
         lbl.textColor = UIColor(named: "BlueTwit")
-        lbl.font = UIFont.boldSystemFont(ofSize: 14)
+        lbl.font = UIFont.boldSystemFont(ofSize: 11)
         return lbl
     }()
-    
+
     private let dateLabel: IndicatorLabel = {
         let lbl = IndicatorLabel()
         lbl.textColor = .lightGray
-        lbl.font = UIFont.systemFont(ofSize: 14)
+        lbl.font = UIFont.systemFont(ofSize: 12)
         return lbl
     }()
 
@@ -48,7 +54,6 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupConstraints()
         setupStackContainer()
-        showDivision()
         self.accessoryType = .disclosureIndicator
     }
 
@@ -56,7 +61,7 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func setupConstraints() {
+    func setupConstraints() {
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
         questionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
         tagsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -66,8 +71,8 @@ class QuestionCell: UITableViewCell, ViewWithSeparatorStyle {
         indicatorsStackView.translatesAutoresizingMaskIntoConstraints = false
         indicatorsStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
-    private func setupStackContainer() {
+
+    func setupStackContainer() {
         let stackView = UIStackViewAnchor(arrangedSubviews: [questionLabel, tagsLabel, dateLabel, indicatorsStackView])
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical

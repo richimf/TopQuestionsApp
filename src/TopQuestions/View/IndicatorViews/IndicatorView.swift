@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class IndicatorView: UIView, ViewWithSeparatorStyle {
+final class IndicatorView: UIView {
         
     // SCORE INDICATOR
     private let scoreIcon: IconIndicator = {
         let icon = IconIndicator(image: UIImage(named: "icCounts"))
-            icon.setWithAnchorTo(constant: 18)
+            icon.setWithAnchorTo(constant: 16)
         return icon
     }()
     
@@ -25,7 +25,7 @@ final class IndicatorView: UIView, ViewWithSeparatorStyle {
     // ANSWERS INDICATOR
     private let answersIcon: IconIndicator = {
         let icon = IconIndicator(image: UIImage(named: "icMessages"))
-            icon.setWithAnchorTo(constant: 18)
+            icon.setWithAnchorTo(constant: 16)
         return icon
     }()
     
@@ -38,7 +38,7 @@ final class IndicatorView: UIView, ViewWithSeparatorStyle {
     // VIEWS INDICATOR
     private let viewsIcon: IconIndicator = {
         let icon = IconIndicator(image: UIImage(named: "icViews"))
-            icon.setWithAnchorTo(constant: 18)
+            icon.setWithAnchorTo(constant: 16)
         return icon
     }()
     

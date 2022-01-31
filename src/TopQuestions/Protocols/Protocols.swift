@@ -29,7 +29,6 @@ protocol InteractorInputProtocol: AnyObject {
     var presenter: InteractorOutputProtocol? { get set}
     // PRESENTER -> INTERACTOR
     func getQuestions(with queries: [URLQueryItem]?)
-    func getQuestionsDetailsFor(questionId: Int, with queries: [URLQueryItem]?)
 }
 
 protocol InteractorOutputProtocol: AnyObject {

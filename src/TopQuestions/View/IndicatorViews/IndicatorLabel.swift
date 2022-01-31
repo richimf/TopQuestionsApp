@@ -27,7 +27,7 @@ final class IndicatorLabel: UILabel {
         self.text = "---"
         self.numberOfLines = 0
         self.backgroundColor = .clear
-        self.font = UIFont.boldSystemFont(ofSize: 16)
+        self.font = UIFont.boldSystemFont(ofSize: 14)
         self.textAlignment = .left
         self.contentMode = .topLeft
         self.adjustsFontSizeToFitWidth = true
