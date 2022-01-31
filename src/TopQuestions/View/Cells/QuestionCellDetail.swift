@@ -7,7 +7,7 @@
 
 import UIKit
 
-class QuestionCellDetail: QuestionCell {
+final class QuestionCellDetail: QuestionCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -14,7 +14,7 @@ extension UITableViewCell {
 }
 
 class QuestionCell: UITableViewCell {
-    
+
     private let questionLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
@@ -24,14 +24,14 @@ class QuestionCell: UITableViewCell {
         lbl.contentMode = .topLeft
         return lbl
     }()
-    
+
     private let tagsLabel: IndicatorLabel = {
         let lbl = IndicatorLabel()
         lbl.textColor = UIColor(named: "BlueTwit")
         lbl.font = UIFont.boldSystemFont(ofSize: 11)
         return lbl
     }()
-    
+
     private let dateLabel: IndicatorLabel = {
         let lbl = IndicatorLabel()
         lbl.textColor = .lightGray
@@ -71,7 +71,7 @@ class QuestionCell: UITableViewCell {
         indicatorsStackView.translatesAutoresizingMaskIntoConstraints = false
         indicatorsStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    
+
     func setupStackContainer() {
         let stackView = UIStackViewAnchor(arrangedSubviews: [questionLabel, tagsLabel, dateLabel, indicatorsStackView])
         stackView.distribution = .fillProportionally

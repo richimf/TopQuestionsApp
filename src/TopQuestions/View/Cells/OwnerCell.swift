@@ -7,8 +7,8 @@
 
 import UIKit
 
-class OwnerCell: UITableViewCell {
-    
+final class OwnerCell: UITableViewCell {
+
     private let nameLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
@@ -18,7 +18,7 @@ class OwnerCell: UITableViewCell {
         lbl.contentMode = .topLeft
         return lbl
     }()
-    
+
     private let countLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .gray
@@ -28,7 +28,7 @@ class OwnerCell: UITableViewCell {
         lbl.contentMode = .topLeft
         return lbl
     }()
-    
+
     private let profilePic: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "icProfile")
@@ -37,7 +37,7 @@ class OwnerCell: UITableViewCell {
         imageView.clipsToBounds = true
         return imageView
     }()
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -62,28 +62,26 @@ class OwnerCell: UITableViewCell {
         view.heightAnchor.constraint(equalToConstant: constant).isActive = true
     }
 
-    func setProfilePicture(image: UIImage) {
+    func setProfilePicture(image: UIImage?) {
+        guard let image = image else { return }
         profilePic.image = image
     }
-    
-    func setName(_ name: String, count: String) {
-        nameLabel.text = name
-        countLabel.text = count
+
+    func setName(_ name: String?, count: Int?) {
+        nameLabel.text = name ?? ""
+        countLabel.text = "\(count ?? 0)"
     }
-    
+
     private func setupStack() {
-        self.backgroundColor = .blue
         let stackViewInfo = UIStackViewAnchor(arrangedSubviews: [nameLabel, countLabel])
         stackViewInfo.distribution = .fillEqually
         stackViewInfo.axis = .vertical
         stackViewInfo.alignment = .leading
-        stackViewInfo.backgroundColor = .green
         stackViewInfo.spacing = 5
         let stackView = UIStackViewAnchor(arrangedSubviews: [profilePic, stackViewInfo])
         stackView.distribution = .fill
         stackView.alignment = .center
         stackView.axis = .horizontal
-        stackView.backgroundColor = .yellow
         stackView.spacing = 5
         addSubview(stackView)
         setWithHeightAnchorTo(constant: 35.0, view: profilePic)
@@ -97,7 +95,5 @@ class OwnerCell: UITableViewCell {
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
         stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
         stackView.widthAnchor.constraint(equalToConstant: frame.width).isActive = true
-
     }
-
 }

@@ -21,6 +21,7 @@ final class DetailViewModel: NSObject {
 
     private let apiClient = APIClient()
     private var data: Item?
+    private var profilePicture: UIImage?
     private let rows: Int = 3
 
     var questionId: Int?
@@ -58,11 +59,19 @@ final class DetailViewModel: NSObject {
         apiClient.setQueryItems(with: queries)
         apiClient.fetchQuestionDetailsFor(questionId: questionId)
     }
+
+    private func getProfilePicture() {
+        guard let imageURL = data?.owner?.profileImage,
+              let url = URL(string: imageURL),
+              let data = try? Data(contentsOf: url) else { return }
+        self.profilePicture = UIImage(data: data)
+    }
 }
 extension DetailViewModel: APIResponseProtocol {
 
     func fetched(response: Response) {
         self.data = response.items.first
+        self.getProfilePicture()
         self.delegate?.reloadView()
     }
 
@@ -94,8 +103,8 @@ extension DetailViewModel: UITableViewDataSource {
         } else if indexPath.row == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.owner, for: indexPath) as? OwnerCell else
             { return UITableViewCell() }
-            //cell.textLabel?.text = "some body large text"
-            cell.setName("name", count: "12345")
+            cell.setName(data?.owner?.displayName, count: data?.owner?.reputation)
+            cell.setProfilePicture(image: profilePicture)
             return cell
         }
         return UITableViewCell()
