@@ -23,7 +23,7 @@ final class OwnerCell: UITableViewCell {
         let lbl = UILabel()
         lbl.textColor = .gray
         lbl.numberOfLines = 0
-        lbl.font = UIFont.systemFont(ofSize: 10)//boldSystemFont(ofSize: 10)
+        lbl.font = UIFont.systemFont(ofSize: 10)
         lbl.textAlignment = .left
         lbl.contentMode = .topLeft
         return lbl
@@ -92,8 +92,6 @@ final class OwnerCell: UITableViewCell {
         stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: frame.width/2).isActive = true
         stackView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
         stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
-        stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
-        stackView.widthAnchor.constraint(equalToConstant: frame.width).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
     }
 }

@@ -99,6 +99,7 @@ extension DetailViewModel: UITableViewDataSource {
             if let text = data?.body {
                 cell.textLabel?.attributedText = text.htmlToAttributedString
             }
+            cell.textLabel?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
             return cell
         } else if indexPath.row == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.owner, for: indexPath) as? OwnerCell else
