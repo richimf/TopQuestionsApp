@@ -13,7 +13,7 @@ class OwnerCell: UITableViewCell {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.numberOfLines = 0
-        lbl.font = UIFont.boldSystemFont(ofSize: 16)
+        lbl.font = UIFont.boldSystemFont(ofSize: 13)
         lbl.textAlignment = .left
         lbl.contentMode = .topLeft
         return lbl
@@ -23,7 +23,7 @@ class OwnerCell: UITableViewCell {
         let lbl = UILabel()
         lbl.textColor = .gray
         lbl.numberOfLines = 0
-        lbl.font = UIFont.boldSystemFont(ofSize: 12)
+        lbl.font = UIFont.systemFont(ofSize: 10)//boldSystemFont(ofSize: 10)
         lbl.textAlignment = .left
         lbl.contentMode = .topLeft
         return lbl

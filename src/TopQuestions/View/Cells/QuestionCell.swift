@@ -19,7 +19,7 @@ class QuestionCell: UITableViewCell {
         let lbl = UILabel()
         lbl.textColor = .black
         lbl.numberOfLines = 0
-        lbl.font = UIFont.boldSystemFont(ofSize: 14)
+        lbl.font = UIFont.boldSystemFont(ofSize: 15)
         lbl.textAlignment = .left
         lbl.contentMode = .topLeft
         return lbl
@@ -28,14 +28,14 @@ class QuestionCell: UITableViewCell {
     private let tagsLabel: IndicatorLabel = {
         let lbl = IndicatorLabel()
         lbl.textColor = UIColor(named: "BlueTwit")
-        lbl.font = UIFont.boldSystemFont(ofSize: 10)
+        lbl.font = UIFont.boldSystemFont(ofSize: 11)
         return lbl
     }()
     
     private let dateLabel: IndicatorLabel = {
         let lbl = IndicatorLabel()
         lbl.textColor = .lightGray
-        lbl.font = UIFont.systemFont(ofSize: 10)
+        lbl.font = UIFont.systemFont(ofSize: 12)
         return lbl
     }()
 
