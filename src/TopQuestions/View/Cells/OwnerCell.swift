@@ -72,8 +72,9 @@ class OwnerCell: UITableViewCell {
     }
     
     private func setupStack() {
+        self.backgroundColor = .blue
         let stackViewInfo = UIStackViewAnchor(arrangedSubviews: [nameLabel, countLabel])
-        stackViewInfo.distribution = .fillProportionally
+        stackViewInfo.distribution = .fillEqually
         stackViewInfo.axis = .vertical
         stackViewInfo.alignment = .leading
         stackViewInfo.backgroundColor = .green
@@ -85,18 +86,16 @@ class OwnerCell: UITableViewCell {
         stackView.backgroundColor = .yellow
         stackView.spacing = 5
         addSubview(stackView)
-        setWithHeightAnchorTo(constant: 70.0, view: profilePic)
-        profilePic.topAnchor.constraint(equalTo: stackView.topAnchor, constant: 0).isActive = true
-        profilePic.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 0).isActive = true
-        profilePic.rightAnchor.constraint(equalTo: stackView.rightAnchor, constant: 0).isActive = true
-        profilePic.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 0).isActive = true
-//        setWithHeightAnchorTo(constant: 80.0, view: stackView)
+        setWithHeightAnchorTo(constant: 35.0, view: profilePic)
+        profilePic.translatesAutoresizingMaskIntoConstraints = false
+        profilePic.leftAnchor.constraint(equalTo: stackView.leftAnchor, constant: 5).isActive = true
+        profilePic.centerYAnchor.constraint(equalTo: stackView.centerYAnchor).isActive = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: frame.width/2).isActive = true
         stackView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
         stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
-        stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 70.0).isActive = true
+        stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 0).isActive = true
         stackView.widthAnchor.constraint(equalToConstant: frame.width).isActive = true
 
     }

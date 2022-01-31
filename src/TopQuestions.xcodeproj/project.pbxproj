@@ -41,6 +41,7 @@
 		1393A371279A549C009387C0 /* UIStackViewAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393A370279A549C009387C0 /* UIStackViewAnchor.swift */; };
 		1393A373279A98D0009387C0 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393A372279A98D0009387C0 /* QuestionCell.swift */; };
 		466EC85227A5C0CD00EFB9F3 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466EC85127A5C0CD00EFB9F3 /* DetailViewModel.swift */; };
+		466EC85427A77CA300EFB9F3 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466EC85327A77CA300EFB9F3 /* String+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		1393A370279A549C009387C0 /* UIStackViewAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewAnchor.swift; sourceTree = "<group>"; };
 		1393A372279A98D0009387C0 /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		466EC85127A5C0CD00EFB9F3 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		466EC85327A77CA300EFB9F3 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				1314AE7C279B86D800590411 /* DateUtil.swift */,
 				1314AE7E279B8D0400590411 /* NumberFormatUtil.swift */,
 				1314AE88279B93C400590411 /* TableViewBuilder.swift */,
+				466EC85327A77CA300EFB9F3 /* String+Ext.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				1393A373279A98D0009387C0 /* QuestionCell.swift in Sources */,
 				1393A365279A314A009387C0 /* Response.swift in Sources */,
 				1393A36D279A5303009387C0 /* ViewProtocols.swift in Sources */,
+				466EC85427A77CA300EFB9F3 /* String+Ext.swift in Sources */,
 				466EC85227A5C0CD00EFB9F3 /* DetailViewModel.swift in Sources */,
 				1393A35A279A14D8009387C0 /* Router.swift in Sources */,
 				1393A35D279A152A009387C0 /* Protocols.swift in Sources */,

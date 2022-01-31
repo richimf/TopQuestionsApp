@@ -87,7 +87,9 @@ extension DetailViewModel: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.body, for: indexPath) as? UITableViewCell else
             { return UITableViewCell() }
             cell.textLabel?.numberOfLines = 0
-            cell.textLabel?.text = data?.body
+            if let text = data?.body {
+                cell.textLabel?.attributedText = text.htmlToAttributedString
+            }
             return cell
         } else if indexPath.row == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.owner, for: indexPath) as? OwnerCell else
