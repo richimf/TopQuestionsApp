@@ -42,6 +42,8 @@
 		1393A373279A98D0009387C0 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1393A372279A98D0009387C0 /* QuestionCell.swift */; };
 		466EC85227A5C0CD00EFB9F3 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466EC85127A5C0CD00EFB9F3 /* DetailViewModel.swift */; };
 		466EC85427A77CA300EFB9F3 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466EC85327A77CA300EFB9F3 /* String+Ext.swift */; };
+		466EC85627A877A600EFB9F3 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466EC85527A877A600EFB9F3 /* MockAPIClient.swift */; };
+		466EC85727A878FC00EFB9F3 /* questions.json in Resources */ = {isa = PBXBuildFile; fileRef = 1314AE77279B7B9A00590411 /* questions.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +103,7 @@
 		1393A372279A98D0009387C0 /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		466EC85127A5C0CD00EFB9F3 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		466EC85327A77CA300EFB9F3 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		466EC85527A877A600EFB9F3 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +226,7 @@
 			children = (
 				1323E6EB2799FA9800DF6E40 /* TopQuestionsTests.swift */,
 				1393A368279A39E8009387C0 /* HTTPRequest.swift */,
+				466EC85527A877A600EFB9F3 /* MockAPIClient.swift */,
 			);
 			path = TopQuestionsTests;
 			sourceTree = "<group>";
@@ -416,6 +420,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				466EC85727A878FC00EFB9F3 /* questions.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +474,7 @@
 			files = (
 				1393A369279A39E8009387C0 /* HTTPRequest.swift in Sources */,
 				1323E6EC2799FA9800DF6E40 /* TopQuestionsTests.swift in Sources */,
+				466EC85627A877A600EFB9F3 /* MockAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

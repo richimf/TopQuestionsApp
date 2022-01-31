@@ -8,9 +8,11 @@
 import XCTest
 @testable import TopQuestions
 
-class HTTPRequest: XCTestCase, APIResponseProtocol {
+final class HTTPRequest: XCTestCase, APIResponseProtocol {
 
-    func testExample() throws {
+    private let expectation = XCTestExpectation(description: "response")
+
+    func testQuestionList() throws {
         let params: [String: String] = [
             "site": "stackoverflow",
             "order": "desc",
@@ -19,16 +21,18 @@ class HTTPRequest: XCTestCase, APIResponseProtocol {
             "pagesize": "10"
         ]
         let queries: [URLQueryItem] = params.map { URLQueryItem(name: $0.key, value: $0.value)}
-        let apiClient = APIClient()
+        
+        let apiClient = MockAPIClient()
         apiClient.delegate = self
         apiClient.setQueryItems(with: queries)
         apiClient.fetchQuestions()
     }
-    
+
     func fetched(response: Response) {
-        print(response)
+        XCTAssert(response.items.count == 10)
+        expectation.fulfill()
     }
-    
+
     func error() {
  
     }

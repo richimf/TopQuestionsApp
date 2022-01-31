@@ -12,18 +12,18 @@ final class Interactor: InteractorInputProtocol {
     // MARK: - VIPER
     /// weak avoids retain cycles
     weak var presenter: InteractorOutputProtocol?
-    private let apiClient = APIClient()
-    
+    private var apiClient: APIClientProtocol? = APIClient()
+
     init() {
-        apiClient.delegate = self
+        self.apiClient?.delegate = self
     }
     
     func getQuestions(with queries: [URLQueryItem]?) {
-        apiClient.setQueryItems(with: queries)
+        apiClient?.setQueryItems(with: queries)
         #if DEBUG
-            apiClient.loadJsonData(file: "questions")
+            apiClient?.loadJsonData(file: "questions")
         #else
-            apiClient.fetchQuestions()
+            apiClient?.fetchQuestions()
         #endif
     }
 }

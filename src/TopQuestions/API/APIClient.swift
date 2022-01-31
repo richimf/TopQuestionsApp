@@ -23,7 +23,15 @@ enum APIURL: String {
     case path = "/2.2/questions"
 }
 
-final class APIClient {
+protocol APIClientProtocol {
+    var delegate: APIResponseProtocol? { get set }
+    func setQueryItems(with queries: [URLQueryItem]?)
+    func loadJsonData(file: String)
+    func fetchQuestions()
+    func fetchQuestionDetailsFor(questionId: Int)
+}
+
+final class APIClient: APIClientProtocol {
 
     var delegate: APIResponseProtocol?
 

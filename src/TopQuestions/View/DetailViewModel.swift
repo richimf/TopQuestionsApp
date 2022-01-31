@@ -87,13 +87,14 @@ extension DetailViewModel: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            guard let data = data, let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.question, for: indexPath) as? QuestionCellDetail else
+            guard let data = data,
+                  let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.question, for: indexPath) as? QuestionCellDetail else
             { return UITableViewCell() }
             cell.setValue(data)
             return cell
         } else
         if indexPath.row == 1 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CellIds.body, for: indexPath) as? UITableViewCell else
+            guard let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: CellIds.body, for: indexPath) as? UITableViewCell else
             { return UITableViewCell() }
             cell.textLabel?.numberOfLines = 0
             if let text = data?.body {
